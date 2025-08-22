@@ -9,13 +9,13 @@ import type { Project as ProjectData } from '@/models';
 
 const Project: FC<ProjectData> = ({ name, description, members, perfomance, tasks }) => {
   return (
-    <div className="p-8 bg-[#F5F4F7] rounded-4xl">
+    <div className="flex flex-col p-8 bg-[#F5F4F7] rounded-4xl">
       <div className="text-2xl font-semibold text-[#4A4A4A]">Project: {name}</div>
-      <div className="card p-4 mt-4">
+      <div className="card p-4 mt-4 mb-9">
         <div className="font-semibold text-[#545454]">Summary of the project</div>
         <div className="text-sm text-[#4A4A4A] mt-2">{description}</div>
       </div>
-      <div className="mt-9 grid grid-cols-3 gap-4">
+      <div className="mt-auto grid grid-cols-3 gap-4">
         <Card title="Project members">
           <Members {...members} />
         </Card>
