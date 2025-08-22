@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type { Members, Members } from '@/models';
+import type { Members } from '@/models';
 
 const Members: FC<Members> = ({ projectManager, teamAvatars }) => {
   return (
@@ -18,7 +18,7 @@ const Members: FC<Members> = ({ projectManager, teamAvatars }) => {
         </div>
         <div className="w-5 h-5 rounded-full border-1 border-[#2FC6F6] flex justify-center items-center">
           <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 0.5V7.5M0.5 4H7.5" stroke="#2FC6F6" stroke-linecap="round" />
+            <path d="M4 0.5V7.5M0.5 4H7.5" stroke="#2FC6F6" strokeLinecap="round" />
           </svg>
         </div>
       </div>
