@@ -1,5 +1,9 @@
 import type { FC } from 'react';
-import Card from './Card';
+
+import Card from './ui/Card';
+import Members from './cards/Members';
+import Perfomance from './cards/Perfomance';
+import Tasks from './cards/Tasks';
 
 const Project: FC = () => {
   return (
@@ -14,9 +18,15 @@ const Project: FC = () => {
         </div>
       </div>
       <div className="mt-9 grid grid-cols-3 gap-4">
-        <Card title="Project members">123</Card>
-        <Card title="Project perfomance"></Card>
-        <Card title="Project tasks"></Card>
+        <Card title="Project members">
+          <Members />
+        </Card>
+        <Card title="Project perfomance">
+          <Perfomance />
+        </Card>
+        <Card title="Project tasks">
+          <Tasks />
+        </Card>
       </div>
     </div>
   );

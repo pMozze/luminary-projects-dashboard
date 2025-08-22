@@ -1,8 +1,8 @@
-@layer theme, components, utilities;
+@import url('https://cdn.jsdelivr.net/npm/sf-font@1.0.0/stylesheet.min.css');
 
+@layer theme, components, utilities;
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities);
-@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
 
 @theme {
   --text-tiny: 0.625rem;
@@ -17,6 +17,10 @@
   }
 }
 
-body {
+#projects-dashboard {
   font-family: 'SF Pro Display', sans-serif;
+}
+
+#projects-dashboard * {
+  box-sizing: border-box;
 }
