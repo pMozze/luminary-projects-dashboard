@@ -1,8 +1,11 @@
-import type { FC } from 'react';
+import { useMemo, type FC } from 'react';
 import { fromUnixTime, formatDate } from 'date-fns';
+import chroma from 'chroma-js';
 import type { Perfomance } from '@/models';
 
 const Perfomance: FC<Perfomance> = ({ start, latestUpdate, deadline, progress, chart }) => {
+  const chartValuesTotal = useMemo(() => chart.planned + chart.ongoing + chart.overdue, [chart]);
+
   return (
     <div>
       <div className="flex items-center justify-between">
@@ -21,14 +24,33 @@ const Perfomance: FC<Perfomance> = ({ start, latestUpdate, deadline, progress, c
           </div>
         </div>
         <div className="w-[74px] h-[74px] rounded-full border-3 border-[#30C6F6] p-[3px]">
-          <div className="flex gap-0.5 justify-center items-center w-full h-full bg-amber-400 rounded-full font-light text-[#000000]">
+          <div
+            className="flex gap-0.5 justify-center items-center w-full h-full rounded-full font-light text-[#000000]"
+            style={{
+              backgroundColor: chroma
+                .scale(['#D95350', '#F5D06D', '#74C991'])(progress / 100)
+                .hex()
+            }}
+          >
             <span className="text-[22px] leading-none proportional-nums">{progress}</span>
             <span className="leading-[22px]">%</span>
           </div>
         </div>
       </div>
       <div className="mt-12">
-        <div className="h-[5px] rounded-full bg-linear-[to_right,#F5D06D_25%,#74C991_25%,#74C991_50%,#D95350_50%]"></div>
+        <div
+          className="h-[5px] rounded-full"
+          style={{
+            backgroundImage: `linear-gradient(to right, ${[
+              `#F5D06D 0%`,
+              `#F5D06D ${(chart.planned / chartValuesTotal) * 100}%`,
+              `#74C991 ${(chart.planned / chartValuesTotal) * 100}%`,
+              `#74C991 ${((chart.planned + chart.ongoing) / chartValuesTotal) * 100}%`,
+              `#D95350 ${((chart.planned + chart.ongoing) / chartValuesTotal) * 100}%`,
+              `#D95350 100%`
+            ].join(',')})`
+          }}
+        ></div>
         <div className="mt-3 flex justify-between">
           <div className="flex items-center gap-1">
             <div className="w-2 h-2 rounded-full bg-[#F5D06D]"></div>

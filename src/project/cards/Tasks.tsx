@@ -12,13 +12,13 @@ const Tasks: FC<Props> = ({ tasks }) => {
     <table className="table-fixed w-full border-collapse">
       <thead>
         <tr>
-          <th className="p-0 pb-2 w-[55%] border-b-1 border-[#C9C9C9] text-start text-tiny text-[#000000] font-normal">
+          <th className="p-0 pb-2 w-[50%] border-b-1 border-[#C9C9C9] text-start text-tiny text-[#000000] font-normal">
             Task Name
           </th>
-          <th className="p-0 px-3 pb-2 border-b-1 border-[#C9C9C9] text-center text-tiny text-[#000000] font-normal">
+          <th className="p-0 pb-2 w-[25%] border-b-1 border-[#C9C9C9] text-center text-tiny text-[#000000] font-normal">
             Assignee
           </th>
-          <th className="p-0 pb-2 border-b-1 border-[#C9C9C9] text-start text-tiny text-[#000000] font-normal">
+          <th className="p-0 pb-2 w-[25%] border-b-1 border-[#C9C9C9] text-start text-tiny text-[#000000] font-normal">
             Deadline
           </th>
         </tr>
