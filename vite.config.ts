@@ -1,8 +1,8 @@
 import path from 'path';
 import { defineConfig } from 'vite';
-import { vitePluginFakeServer } from 'vite-plugin-fake-server';
-
 import react from '@vitejs/plugin-react-swc';
+
+import svgr from 'vite-plugin-svgr';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
@@ -22,8 +22,9 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src')
+      '@': path.resolve(__dirname, 'src'),
+      '@icons': path.resolve(__dirname, 'src/icons')
     }
   },
-  plugins: [react(), tailwindcss(), vitePluginFakeServer()]
+  plugins: [react(), svgr(), tailwindcss()]
 });

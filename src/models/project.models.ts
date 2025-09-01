@@ -1,14 +1,11 @@
-export interface User {
-  url: string;
-  avatar: string;
-  fullName: string;
-}
+import type { User } from './models';
 
 export interface Project {
+  id: number;
   name: string;
   description: string;
   members: Members;
-  perfomance: Perfomance;
+  performance: Performance;
   tasks: Task[];
   lastComment: {
     comment: string;
@@ -24,7 +21,7 @@ export interface Members {
   other: User[];
 }
 
-export interface Perfomance {
+export interface Performance {
   start: number;
   latestUpdate: number;
   deadline: number;

@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type { User } from '@/models';
+import type { User } from '@/models/models';
 
 import { formatDate } from 'date-fns';
 import { twMerge } from 'tailwind-merge';

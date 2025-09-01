@@ -1,9 +1,9 @@
 import { useMemo, type FC } from 'react';
 import { fromUnixTime, formatDate } from 'date-fns';
 import chroma from 'chroma-js';
-import type { Perfomance } from '@/models';
+import type { Performance as PerformanceData } from '@/models/project.models';
 
-const Perfomance: FC<Perfomance> = ({ start, latestUpdate, deadline, progress, chart }) => {
+const Performance: FC<PerformanceData> = ({ start, latestUpdate, deadline, progress, chart }) => {
   const chartValuesTotal = useMemo(() => chart.planned + chart.ongoing + chart.overdue, [chart]);
 
   return (
@@ -70,4 +70,4 @@ const Perfomance: FC<Perfomance> = ({ start, latestUpdate, deadline, progress, c
   );
 };
 
-export default Perfomance;
+export default Performance;

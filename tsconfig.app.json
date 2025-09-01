@@ -25,7 +25,8 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@icons/*": ["./src/icons/*"]
     }
   },
   "include": ["src"]

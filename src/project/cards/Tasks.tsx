@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { fromUnixTime, formatDate } from 'date-fns';
 
-import type { Task } from '@/models';
+import type { Task } from '@/models/project.models';
 
 interface Props {
   tasks: Task[];
@@ -24,7 +24,7 @@ const Tasks: FC<Props> = ({ tasks }) => {
         </tr>
       </thead>
       <tbody>
-        {tasks.map((task, taskId) => (
+        {tasks.slice(0, 3).map((task, taskId) => (
           <tr key={taskId}>
             <td className="p-0 pt-4 pb-2 border-b-1 border-[#C9C9C9] text-xs text-[#000000]">
               <a className="text-inherit no-underline" href={task.url}>
