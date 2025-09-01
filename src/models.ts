@@ -1,18 +1,27 @@
+export interface User {
+  url: string;
+  avatar: string;
+  fullName: string;
+}
+
 export interface Project {
   name: string;
   description: string;
   members: Members;
   perfomance: Perfomance;
   tasks: Task[];
+  lastComment: {
+    comment: string;
+    time: number;
+    author: User;
+  } | null;
 }
 
 export interface Members {
-  projectManager: {
-    avatar: string;
-    fullName: string;
+  projectManager: User & {
     position: string;
   };
-  teamAvatars: string[];
+  other: User[];
 }
 
 export interface Perfomance {
@@ -28,7 +37,8 @@ export interface Perfomance {
 }
 
 export interface Task {
+  url: string;
   name: string;
-  assigneeAvatar: string;
+  assignee: User;
   deadline: number;
 }

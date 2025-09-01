@@ -1,10 +1,8 @@
-import { type FC, memo } from 'react';
+import type { FC } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import type { Project as ProjectData } from './models';
 import Project from './project/Project';
-
-const MemoizedProject = memo(Project);
 
 const App: FC = () => {
   const { data: projects } = useQuery<ProjectData[]>({
@@ -18,15 +16,16 @@ const App: FC = () => {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-8">
+    <div className="grid grid-cols-2 max-2xl:grid-cols-1 gap-8">
       {projects.map((project, projectIndex) => (
-        <MemoizedProject
+        <Project
           key={projectIndex}
           name={project.name}
           description={project.description}
           members={project.members}
           perfomance={project.perfomance}
           tasks={project.tasks}
+          lastComment={project.lastComment}
         />
       ))}
     </div>
