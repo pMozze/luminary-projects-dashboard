@@ -37,7 +37,7 @@ const Tasks: FC<Props> = ({ tasks }) => {
               </a>
             </td>
             <td className="p-0 pt-4 pb-2 border-b-1 border-[#C9C9C9] text-tiny text-[#000000]">
-              {formatDate(fromUnixTime(task.deadline), 'dd.MM.yyyy')}
+              {!!task.deadline && formatDate(fromUnixTime(task.deadline), 'dd.MM.yyyy')}
             </td>
           </tr>
         ))}

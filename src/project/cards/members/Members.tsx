@@ -11,7 +11,7 @@ const Members: FC<Props & Members> = ({ projectId, projectManager, other: member
     <div className="flex flex-col items-center">
       <div className="text-tiny text-[#b9babb]">Project manager</div>
       <a href={projectManager.url}>
-        <img className="block mt-1 w-14 h-14 rounded-full" src={projectManager.avatar} alt="" />
+        <img className="block object-cover mt-1 w-14 h-14 rounded-full" src={projectManager.avatar} alt="" />
       </a>
       <div className="mt-2 text-tiny text-[#000000]">{projectManager.fullName}</div>
       <div className="mt-1 text-tiny text-[#828B95]">{projectManager.position}</div>

@@ -61,7 +61,7 @@ const Select: FC<Props> = ({ items: initialItems, onSelect, floating }) => {
               data-active={item.isSelected}
               onClick={() => toggleItemActive(item)}
             >
-              <img className="shrink-0 w-7 h-7 rounded-full" src={item.avatar} alt="" />
+              <img className="shrink-0 w-7 h-7 object-cover rounded-full" src={item.avatar} alt="" />
               <div className="content-center mr-5">{item.fullName}</div>
               <div
                 className="mr-2.5 flex ml-auto text-[#0DB1E6]"

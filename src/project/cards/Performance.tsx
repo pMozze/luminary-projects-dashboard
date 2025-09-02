@@ -18,10 +18,12 @@ const Performance: FC<PerformanceData> = ({ start, latestUpdate, deadline, progr
             <span className="font-semibold">Latest update - </span>
             <span>{formatDate(fromUnixTime(latestUpdate), 'dd.MM.yy')}</span>
           </div>
-          <div className="w-fit py-1 px-2 text-tiny text-[#545454] rounded-lg bg-[#F3F2AC]">
-            <span className="font-semibold">Deadline - </span>
-            <span>{formatDate(fromUnixTime(deadline), 'dd.MM.yy')}</span>
-          </div>
+          {!!deadline && (
+            <div className="w-fit py-1 px-2 text-tiny text-[#545454] rounded-lg bg-[#F3F2AC]">
+              <span className="font-semibold">Deadline - </span>
+              <span>{formatDate(fromUnixTime(deadline), 'dd.MM.yy')}</span>
+            </div>
+          )}
         </div>
         <div className="w-[74px] h-[74px] rounded-full border-3 border-[#30C6F6] p-[3px]">
           <div

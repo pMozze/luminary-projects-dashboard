@@ -46,7 +46,7 @@ const Team: FC<Members> = ({ projectId, members, className }) => {
   const { getReferenceProps, getFloatingProps } = useInteractions([useDismiss(context, { ancestorScroll: true })]);
 
   const onSelect = (users: Users) => {
-    mutateUsers.mutate({ groupId: projectId, userId: users[0].id });
+    mutateUsers.mutate({ groupId: projectId, userIds: users.map(user => user.id) });
   };
 
   return (
@@ -58,7 +58,7 @@ const Team: FC<Members> = ({ projectId, members, className }) => {
       <div className="p-1 border-1 border-[#A2A7AE] rounded-full flex items-center gap-0.5">
         {members.slice(0, 3).map((member, memeberIndex) => (
           <a key={memeberIndex} href={member.url} title={member.fullName}>
-            <img className="block w-4 h-4 rounded-full" src={member.avatar} alt="" />
+            <img className="block object-cover w-4 h-4 rounded-full" src={member.avatar} alt="" />
           </a>
         ))}
         {members.length > 3 && <div className="text-tiny text-[#A2A7AE]">+{members.length - 3}</div>}
