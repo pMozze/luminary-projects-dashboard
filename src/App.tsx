@@ -1,15 +1,18 @@
-import type { FC } from 'react';
+import { type FC } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import type { Project as ProjectData } from './models/project.models';
 import Project from './project/Project';
 
+import { useAppContext } from './useAppContext';
 import { apiFetcher } from './utils/apiFetcher';
 
 const App: FC = () => {
+  const { userId } = useAppContext();
+
   const { data: projects } = useQuery({
-    queryKey: ['projects'],
-    queryFn: () => apiFetcher<ProjectData[]>(`${import.meta.env.VITE_API_URL}/92`),
+    queryKey: ['projects', userId],
+    queryFn: () => apiFetcher<ProjectData[]>(`${import.meta.env.VITE_API_URL}/${userId}`),
     refetchInterval: 5000,
     select: ({ data }) => data
   });
