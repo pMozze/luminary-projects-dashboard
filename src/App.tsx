@@ -24,6 +24,7 @@ const App: FC = () => {
         <Project
           key={projectIndex}
           id={project.id}
+          url={project.url}
           name={project.name}
           description={project.description}
           members={project.members}

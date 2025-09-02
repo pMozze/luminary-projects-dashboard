@@ -2,6 +2,7 @@ import type { User } from './models';
 
 export interface Project {
   id: number;
+  url: string;
   name: string;
   description: string;
   members: Members;
