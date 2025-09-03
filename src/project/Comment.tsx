@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import type { User } from '@/models/models';
 
-import { formatDate } from 'date-fns';
+import { formatDate, fromUnixTime } from 'date-fns';
 import { twMerge } from 'tailwind-merge';
 
 interface Props {
@@ -22,7 +22,7 @@ const Comment: FC<Props> = ({ className, text, createdOn, author }) => {
           <a className="text-sm text-[#1F67AF] font-medium no-underline" href={author.url}>
             {author.fullName}
           </a>
-          <div className="text-sm text-[#868686] font-medium">{formatDate(createdOn, 'd MMMM H:mm')}</div>
+          <div className="text-sm text-[#868686] font-medium">{formatDate(fromUnixTime(createdOn), 'd MMMM H:mm')}</div>
         </div>
         <div className="text-sm">{text}</div>
       </div>

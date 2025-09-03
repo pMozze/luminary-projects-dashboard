@@ -12,9 +12,16 @@ import type { Project as ProjectData } from '@/models/project.models';
 const Project: FC<ProjectData> = ({ id, url, name, description, members, performance, tasks, lastComment }) => {
   return (
     <div className="flex flex-col p-8 max-md:p-4 bg-[#F5F4F7] rounded-4xl max-md:rounded-2xl">
-      <a className="text-2xl font-semibold text-[#4A4A4A] no-underline w-fit" href={url}>
+      <div className="text-2xl font-semibold text-[#4A4A4A] no-underline w-fit"
+           style={{ cursor: 'pointer' }}
+           onClick={() => {
+             // @ts-expect-error: Bitrix global
+             if (!BX?.SidePanel?.Instance?.open(url)) {
+               window.location.href = url;
+             }
+           }}>
         Project: {name}
-      </a>
+      </div>
       {description && (
         <div className="card p-4 mt-4">
           <div className="font-semibold text-[#545454]">Summary of the project</div>
