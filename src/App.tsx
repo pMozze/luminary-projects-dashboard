@@ -8,11 +8,11 @@ import { useAppContext } from './useAppContext';
 import { apiFetcher } from './utils/apiFetcher';
 
 const App: FC = () => {
-  const { userId } = useAppContext();
+  const { userId, apiUrl } = useAppContext();
 
   const { data: projects } = useQuery({
-    queryKey: ['projects', userId],
-    queryFn: () => apiFetcher<ProjectData[]>(`${import.meta.env.VITE_API_URL}/${userId}`),
+    queryKey: ['projects', userId, apiUrl],
+    queryFn: () => apiFetcher<ProjectData[]>(`${apiUrl}/${userId}`),
     refetchInterval: 5000,
     select: ({ data }) => data
   });

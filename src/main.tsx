@@ -7,6 +7,7 @@ import './main.css';
 
 interface AppContext {
   userId: number;
+  apiUrl: string;
 }
 
 const queryClient = new QueryClient();
@@ -16,7 +17,7 @@ export const AppContext = createContext<AppContext | null>(null);
 createRoot(rootElement).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <AppContext value={{ userId: Number(rootElement.dataset.userId) }}>
+      <AppContext value={{ userId: Number(rootElement.dataset.userId), apiUrl: rootElement.dataset.apiUrl! }}>
         <App />
       </AppContext>
     </QueryClientProvider>

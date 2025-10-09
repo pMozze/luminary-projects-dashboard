@@ -11,6 +11,8 @@ import PlusIcon from '@icons/plus.svg?react';
 import type { Users, InviteUser } from '@/models/users.model';
 import { apiFetcher } from '@/utils/apiFetcher';
 
+import { useAppContext } from '@/useAppContext';
+
 interface Members {
   projectId: number;
   members: User[];
@@ -18,16 +20,17 @@ interface Members {
 }
 
 const Team: FC<Members> = ({ projectId, members, className }) => {
+  const { apiUrl } = useAppContext();
   const [isSelectOpen, setIsSelectOpen] = useState(false);
 
   const { data: users, refetch: refetchUsers } = useQuery({
-    queryKey: ['users', projectId],
-    queryFn: () => apiFetcher<Users>(`${import.meta.env.VITE_API_URL}/usersToInviteToGroup/${projectId}`),
+    queryKey: ['users', projectId, apiUrl],
+    queryFn: () => apiFetcher<Users>(`${apiUrl}/usersToInviteToGroup/${projectId}`),
     select: ({ data }) => data
   });
 
   const mutateUsers = useMutation<unknown, Error, InviteUser>({
-    mutationFn: data => apiFetcher<InviteUser, unknown>(`${import.meta.env.VITE_API_URL}/inviteUserToGroup`, data),
+    mutationFn: data => apiFetcher<InviteUser, unknown>(`${apiUrl}/inviteUserToGroup`, data),
     onMutate: () => {
       setIsSelectOpen(false);
     },
