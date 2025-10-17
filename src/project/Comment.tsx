@@ -24,7 +24,7 @@ const Comment: FC<Props> = ({ className, text, createdOn, author }) => {
           </a>
           <div className="text-sm text-[#868686] font-medium">{formatDate(fromUnixTime(createdOn), 'd MMMM H:mm')}</div>
         </div>
-        <div className="text-sm">{text}</div>
+        <div className="text-sm" dangerouslySetInnerHTML={{ __html: text }}></div>
       </div>
     </div>
   );
