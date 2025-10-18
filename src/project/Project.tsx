@@ -12,14 +12,16 @@ import type { Project as ProjectData } from '@/models/project.models';
 const Project: FC<ProjectData> = ({ id, url, name, description, members, performance, tasks, lastComment }) => {
   return (
     <div className="flex flex-col p-8 max-md:p-4 bg-[#F5F4F7] rounded-4xl max-md:rounded-2xl">
-      <div className="text-2xl font-semibold text-[#4A4A4A] no-underline w-fit"
-           style={{ cursor: 'pointer' }}
-           onClick={() => {
-             // @ts-expect-error: Bitrix global
-             if (!BX?.SidePanel?.Instance?.open(url)) {
-               window.location.href = url;
-             }
-           }}>
+      <div
+        className="text-2xl font-semibold text-[#4A4A4A] no-underline w-fit"
+        style={{ cursor: 'pointer' }}
+        onClick={() => {
+          // @ts-expect-error: Bitrix global
+          if (!BX?.SidePanel?.Instance?.open(url)) {
+            window.location.href = url;
+          }
+        }}
+      >
         Project: {name}
       </div>
       {description && (
@@ -45,7 +47,13 @@ const Project: FC<ProjectData> = ({ id, url, name, description, members, perform
         </Card>
       </div>
       {lastComment && (
-        <Comment className="mt-4" text={lastComment.comment} createdOn={lastComment.time} author={lastComment.author} />
+        <Comment
+          className="mt-4"
+          text={lastComment.comment}
+          createdOn={lastComment.time}
+          author={lastComment.author}
+          url={lastComment.url}
+        />
       )}
     </div>
   );

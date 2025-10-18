@@ -12,6 +12,7 @@ export interface Project {
     comment: string;
     time: number;
     author: User;
+    url: string;
   } | null;
 }
 

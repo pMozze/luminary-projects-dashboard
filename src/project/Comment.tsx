@@ -8,10 +8,11 @@ interface Props {
   text: string;
   createdOn: number;
   author: User;
+  url: string;
   className?: string;
 }
 
-const Comment: FC<Props> = ({ className, text, createdOn, author }) => {
+const Comment: FC<Props> = ({ className, text, createdOn, author, url }) => {
   return (
     <div className={twMerge(className, 'flex gap-2')}>
       <a className="shrink-0" href={author.url}>
@@ -24,7 +25,10 @@ const Comment: FC<Props> = ({ className, text, createdOn, author }) => {
           </a>
           <div className="text-sm text-[#868686] font-medium">{formatDate(fromUnixTime(createdOn), 'd MMMM H:mm')}</div>
         </div>
-        <div className="text-sm" dangerouslySetInnerHTML={{ __html: text }}></div>
+        <div className="text-sm break-all" dangerouslySetInnerHTML={{ __html: text }}></div>
+        <a className="text-sm text-[#1F67AF] font-medium no-underline" href={url}>
+          See more
+        </a>
       </div>
     </div>
   );
